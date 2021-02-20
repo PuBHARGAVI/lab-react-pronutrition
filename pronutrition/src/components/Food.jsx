@@ -17,8 +17,7 @@ class Food extends Component {
         })
       }
     render() {
-        var arr=this.state.data.map(item=>{
-          return (item.show && <div className="box">
+          return (<div className="box">
   <article className="media">
     <div className="media-left">
       <figure className="image">
@@ -44,9 +43,8 @@ class Food extends Component {
       </div>
     </div>
   </article>
-  </div> && <Search content={this.state.data}/>)})
-  return arr;
+  </div>)}
 }
-}
+
 
 export default Food;

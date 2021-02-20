@@ -22,31 +22,47 @@ export default class Search extends Component {
           data: this.props.content,
       })
     }
-    countIncrementer=()=>{
-     console.log("HI");   
-    }
-    dataupdate(){
-        var dataarr=this.state.data
-        var itemarr=this.state.items
-    for(var i=0;i<dataarr.length;i++){
-        for(var j=0;j<itemarr.length;j++){
-            if(dataarr[i].name!==itemarr[i].name){
-                dataarr[i].show=false
-            }
-            else{
-                dataarr[i].show=true
-            }
+    setSwitchNameHandler=() =>{
+        //  console.log("clicked ");
+        const ct=document.getElementById("count").value;
+        alert("Number of counts: "+ct);
+        alert("Calories: "+this.props.calories);
         }
-    }
-    }
     render() {
         return (
         <div> 
             <h1 align="left" id="h1">Search</h1>
            <form><input type="text" className="form" placeholder="Find a food" onChange={this.filterList}/>
             </form>
-            {this.dataupdate()}
-            <Food content={this.state.data}/>
+            {this.state.items.map(item=>{
+                return (<div className="box">
+                <article className="media">
+                  <div className="media-left">
+                    <figure className="image">
+                      <img className="foodpic" src={item.img} alt={item.img} />
+                    </figure>
+                  </div>
+                  <div className="media-content">
+                    <div className="content">
+                      <p>
+                        <strong>{item.name}</strong> <br />
+                        <small>{item.calories}</small>
+                      </p>
+                    </div>
+                  </div>
+                  <div className="media-right">
+                    <div className="field-has-addons">
+                      <div className="control">
+                        <input className="input" id="count" type="number" min="1" max="10"/>
+                      </div>
+                      <div className="control">
+                        <button className="button-is-info" onClick={this.setSwitchNameHandler}> +</button>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+                </div>);
+            })}
         </div>
         );
     }
