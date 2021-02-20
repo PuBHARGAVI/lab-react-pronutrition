@@ -1,0 +1,52 @@
+import React, { Component } from 'react';
+import './Components.css';
+import Search from './Search';
+class Food extends Component {
+  state = {
+    data: []
+  }
+    setSwitchNameHandler=() =>{
+      //  console.log("clicked ");
+      const ct=document.getElementById("count").value;
+      alert("Number of counts: "+ct);
+      alert("Calories: "+this.props.calories);
+      }
+    componentWillMount = () => {
+        this.setState({
+            data: this.props.content,
+        })
+      }
+    render() {
+        var arr=this.state.data.map(item=>{
+          return (item.show && <div className="box">
+  <article className="media">
+    <div className="media-left">
+      <figure className="image">
+        <img className="foodpic" src={this.props.img} alt={this.props.img} />
+      </figure>
+    </div>
+    <div className="media-content">
+      <div className="content">
+        <p>
+          <strong>{this.props.name}</strong> <br />
+          <small>{this.props.calories}</small>
+        </p>
+      </div>
+    </div>
+    <div className="media-right">
+      <div className="field-has-addons">
+        <div className="control">
+          <input className="input" id="count" type="number" min="1" max="10"/>
+        </div>
+        <div className="control">
+          <button className="button-is-info" onClick={this.setSwitchNameHandler}> +</button>
+        </div>
+      </div>
+    </div>
+  </article>
+  </div> && <Search content={this.state.data}/>)})
+  return arr;
+}
+}
+
+export default Food;

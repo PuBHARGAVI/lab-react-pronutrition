@@ -1,0 +1,97 @@
+.image{
+    display: flex;
+    flex-direction: row;
+}
+.maindata{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.foodpic{
+    height: 50px;
+}
+
+.media{
+    margin-top: 70px;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    background: rgb(177, 169, 185);
+    width: 500px;
+    margin-left: 50px;
+    border-radius: 10px;
+}
+.field-has-addons{
+    margin-top: 20px;
+    margin-left: 50px;
+    display: flex;
+    flex-direction: row;
+}
+.input{
+    border-color: blueviolet;
+    border-radius: 5px;
+    width: 100px;
+}
+.button-is-info{
+    background-color: blueviolet;
+    margin-left: 10px;
+}
+.form{
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 10px;
+    margin-left: 50px;
+    border-radius: 5px;
+    border: 5px solid violet;
+    padding: 10px;
+    
+}
+.box{
+    display: flex;
+    flex-direction: row;
+    border-style: solid blue;
+    border-radius: 10px;
+    width: 500px;
+    margin-left: 60px;
+    margin-top:10px;
+    margin-right:10px;
+    margin-bottom:10px;
+    background-color: grey;
+}
+#image{
+    max-width: 80px;
+    max-height: 80px;
+    margin-left: 60px;
+    margin-top:10px;
+    margin-bottom:10px;
+    margin-right: 60px;
+}
+#h1{
+    margin-left: 60px;
+}
+#text{
+    width:60px;
+    height:20px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    border-style: solid blue;
+    border-radius: 5px;
+}
+#button{
+    width:20px;
+    height:25px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    background-color: blue;
+}
+.itemscontainer{
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+.flex-container{
+    display: flex;
+    flex-direction: row;
+}
