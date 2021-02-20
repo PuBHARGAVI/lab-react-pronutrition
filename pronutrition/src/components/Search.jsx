@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import './Components.css';
 import Food from './Food';
-
+import service from './service.js';
 export default class Search extends Component {
     state = {
         data: [],
         items: [],
-        value:0
+        value:0,
+        selecteditems: []
     }
     filterList = (event) => {
         let itemlist = this.state.data;
@@ -22,20 +23,25 @@ export default class Search extends Component {
           data: this.props.content,
       })
     }
-    setSwitchNameHandler=() =>{
-        //  console.log("clicked ");
-        const ct=document.getElementById("count").value;
-        alert("Number of counts: "+ct);
-        alert("Calories: "+this.props.calories);
-        }
+    setSwitchNameHandler=(name,value) =>{
+          //  console.log("clicked ");
+          const ct=document.getElementById("count").value;
+          alert("Number of counts: "+ct);
+          alert("Calories: "+value);
+          this.state.selecteditems.push([name,value])
+          this.setState({selecteditems:this.state.selecteditems})
+          service.sharedData=this.state.selecteditems;
+          console.log(service.sharedData[0])
+          }
+    
     render() {
         return (
         <div> 
             <h1 align="left" id="h1">Search</h1>
            <form><input type="text" className="form" placeholder="Find a food" onChange={this.filterList}/>
             </form>
-            {this.state.items.map(item=>{
-                return (<div className="box">
+            {this.state.items.map(item => (
+                <div className="flex-container"><div className="box">
                 <article className="media">
                   <div className="media-left">
                     <figure className="image">
@@ -44,7 +50,7 @@ export default class Search extends Component {
                   </div>
                   <div className="media-content">
                     <div className="content">
-                      <p>
+                      <p>                                            
                         <strong>{item.name}</strong> <br />
                         <small>{item.calories}</small>
                       </p>
@@ -56,16 +62,21 @@ export default class Search extends Component {
                         <input className="input" id="count" type="number" min="1" max="10"/>
                       </div>
                       <div className="control">
-                        <button className="button-is-info" onClick={this.setSwitchNameHandler}> +</button>
+                        <button className="button-is-info" onClick={this.setSwitchNameHandler.bind(this,item.name,item.calories)}> +</button>
                       </div>
                     </div>
                   </div>
                 </article>
-                </div>);
-            })}
+                </div>
+                {/* <div>
+                   {service.sharedData.map(item=>(
+                            <div>{item[0]}{item[1]}</div>
+                   ))};
+                </div> */}
+        </div>)
+        )}
         </div>
-        );
-    }
-    }
+            )
+}
 
-
+}

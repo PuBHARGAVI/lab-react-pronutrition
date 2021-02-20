@@ -3,13 +3,15 @@ import './Components.css';
 import Search from './Search';
 class Food extends Component {
   state = {
-    data: []
+    data: [],
+    selecteditems: []
   }
-    setSwitchNameHandler=() =>{
+    setSwitchNameHandler=(event) =>{
       //  console.log("clicked ");
       const ct=document.getElementById("count").value;
-      alert("Number of counts: "+ct);
+      alert("Number of counts: "+ct+1);
       alert("Calories: "+this.props.calories);
+      this.setState({selecteditems:this.state.selecteditems.push([event.target.name,event.target.calories])})
       }
     componentWillMount = () => {
         this.setState({
@@ -17,6 +19,7 @@ class Food extends Component {
         })
       }
     render() {
+
           return (<div className="box">
   <article className="media">
     <div className="media-left">
