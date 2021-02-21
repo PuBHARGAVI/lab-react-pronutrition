@@ -26,12 +26,16 @@ export default class Search extends Component {
     setSwitchNameHandler=(name,value) =>{
           //  console.log("clicked ");
           const ct=document.getElementById("count").value;
-          alert("Number of counts: "+ct);
-          alert("Calories: "+value);
-          this.state.selecteditems.push([name,value])
-          this.setState({selecteditems:this.state.selecteditems})
+          var res="";
+          var newArr = this.state.selecteditems;
+          newArr.push([name,value]);
+          this.setState({selecteditems:newArr})
+          this.state.selecteditems.map(item=>(
+            res=res+"name: "+item[0]+" calories: "+ct*parseInt(item[1])+"\n"
+          ))
+          alert("selecteditems are:\n "+res);
           service.sharedData=this.state.selecteditems;
-          console.log(service.sharedData[0])
+          console.log(this.state.selecteditems)
           }
     
     render() {
